@@ -1,0 +1,161 @@
+
+What is DOM?
+
+DOM (Document Object Model) represents HTML as a tree structure
+JavaScript uses DOM methods to access, modify, add, delete elements
+
+1. Selecting Elements (Accessing)
+getElementById()
+<p id="demo">Hello</p>
+
+<script>
+let x = document.getElementById("demo");
+console.log(x.innerHTML);
+</script>
+
+
+getElementsByClassName()
+<p class="test">A</p>
+<p class="test">B</p>
+
+<script>
+let x = document.getElementsByClassName("test");
+console.log(x[0].innerHTML);
+</script>
+
+getElementsByTagName()
+<p>First</p>
+<p>Second</p>
+
+<script>
+let x = document.getElementsByTagName("p");
+console.log(x[1].innerHTML);
+</script>
+querySelector()
+<p class="demo">Hello</p>
+
+<script>
+let x = document.querySelector(".demo");
+console.log(x.innerHTML);
+</script>
+querySelectorAll()
+<p class="demo">A</p>
+<p class="demo">B</p>
+
+<script>
+let x = document.querySelectorAll(".demo");
+console.log(x[1].innerHTML);
+</script>
+
+=====================================================================================================
+2. Modifying Elements
+Change Content
+<p id="demo">Hello</p>
+
+<script>
+document.getElementById("demo").innerHTML = "Changed!";
+</script>
+Change Style
+<script>
+document.getElementById("demo").style.color = "red";
+</script>
+
+Change Attribute
+<img id="img">
+
+<script>
+document.getElementById("img").src = "image.jpg";
+</script>
+
+=================================================================================================
+3. Creating & Adding Elements
+createElement() + appendChild()
+<div id="box"></div>
+
+<script>
+let p = document.createElement("p");
+p.innerHTML = "New Paragraph";
+
+document.getElementById("box").appendChild(p);
+</script>
+insertBefore()
+let parent = document.getElementById("box");
+let newEl = document.createElement("p");
+newEl.innerHTML = "Inserted";
+
+parent.insertBefore(newEl, parent.firstChild);
+4. Deleting Elements
+remove()
+document.getElementById("demo").remove();
+removeChild()
+let parent = document.getElementById("box");
+let child = document.getElementById("demo");
+
+parent.removeChild(child);
+
+============================================================================================
+5. Replacing Elements
+replaceChild()
+let parent = document.getElementById("box");
+
+let newEl = document.createElement("p");
+newEl.innerHTML = "New";
+
+let oldEl = document.getElementById("demo");
+
+parent.replaceChild(newEl, oldEl);
+
+==================================================================================================
+6. Event Handling Methods
+addEventListener()
+<button id="btn">Click</button>
+
+<script>
+document.getElementById("btn").addEventListener("click", function() {
+   alert("Button Clicked");
+});
+</script>
+======================================================================================================
+7. Useful Properties
+innerHTML
+innerText
+style
+src, href
+value
+One Complete Program (Exam Ready)
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Hello</p>
+<button onclick="change()">Change</button>
+
+<div id="box"></div>
+
+<script>
+function change() {
+   // modify
+   document.getElementById("demo").innerHTML = "Updated";
+
+   // create
+   let p = document.createElement("p");
+   p.innerHTML = "New Element";
+
+   // add
+   document.getElementById("box").appendChild(p);
+
+   // style
+   p.style.color = "blue";
+}
+</script>
+
+</body>
+</html>
+
+====================================================================================================
+Final Summary
+Select → getElementById, querySelector
+Modify → innerHTML, style, attributes
+Add → createElement, appendChild
+Delete → remove, removeChild
+Events → addEventListener
